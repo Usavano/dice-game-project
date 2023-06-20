@@ -1,0 +1,233 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap");
+/*
+=============== 
+Null Style
+===============
+*/
+html {
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*:focus, *:active {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+html, body {
+  height: 100%;
+  line-height: 1.5;
+  font-size: 12px;
+  font-weight: 400;
+  background: #F1F5F8;
+}
+
+button {
+  display: inline-block;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+/*
+=============== 
+Variables
+===============
+*/
+:root {
+  --clr-primary-green: #00CD5D;
+  --clr-primary-red: #D20002;
+  --clr-primary-blue: #008FF8;
+  --clr-primary-yellow: #D7C700;
+  --clr-primary-bg: #393939;
+  --clr-active-green: #00FF73;
+  --clr-active-red: #FF0003;
+  --clr-active-blue: #43AFFF;
+  --clr-active-yellow: #FFED00;
+  --clr-border-gradient-green: linear-gradient(112.74deg, #83DA9B 10.25%, rgba(131, 218, 155, 0) 68.12%);
+  --clr-border-gradient-red: linear-gradient(112.74deg, #D6746C 26.2%, rgba(210, 0, 2, 0) 68.12%);
+  --clr-border-gradient-green: linear-gradient(112.74deg, #61B4FF 10.25%, rgba(0, 143, 248, 0) 68.12%);
+  --clr-border-gradient-green: linear-gradient(112.74deg, #F1E664 10.25%, rgba(215, 199, 0, 0) 68.12%);
+  --ff-primary: "Jost", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.025rem;
+  --circle-radius: 50%;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --fixed-width: 700px;
+}
+
+/*
+=============== 
+Global Styles
+===============
+*/
+body {
+  font-family: var(--ff-primary);
+  background-color: white;
+  color: black;
+  transition: var(--transition);
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+/*  global classes */
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+._container {
+  max-width: var(--fixed-width);
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.game-area__title {
+  text-align: center;
+  margin: 0 0 2rem 0;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-animation: bounceTitle 2.5s ease-in-out;
+          animation: bounceTitle 2.5s ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+@-webkit-keyframes bounceTitle {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes bounceTitle {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.main {
+  position: relative;
+}
+.main .block-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 700px;
+  position: relative;
+  z-index: 1;
+}
+.main .block-container > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.main .block-container > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}
+.main .block-container > *:nth-child(3) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}
+.main .block-container > *:nth-child(4) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+}
+.main .block-container .block {
+  position: relative;
+}
+.main .block-container .block .btn {
+  position: absolute;
+  cursor: pointer;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+.main .block-container .block .btn.active {
+  -webkit-filter: brightness(5);
+          filter: brightness(5);
+}
+.main .block-container .block__btn_green {
+  right: 15px;
+  bottom: 15px;
+}
+.main .block-container .block__btn_red {
+  left: 15px;
+  bottom: 15px;
+}
+.main .block-container .block__btn_yellow {
+  right: 15px;
+  top: 15px;
+}
+.main .block-container .block__btn_blue {
+  left: 15px;
+  top: 15px;
+}
+.main__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--clr-primary-bg);
+  border-radius: var(--circle-radius);
+  z-index: 0;
+}

@@ -1,0 +1,144 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+
+/*
+=============== 
+Null Style
+===============
+*/
+@import 'nullStyle.scss';
+
+/*
+=============== 
+Variables
+===============
+*/
+:root {
+    // primary colors
+    --clr-primary-green: #00CD5D;
+    --clr-primary-red: #D20002;
+    --clr-primary-blue: #008FF8;
+    --clr-primary-yellow: #D7C700;
+    --clr-primary-bg: #393939;
+    // active colors
+    --clr-active-green: #00FF73;
+    --clr-active-red: #FF0003;
+    --clr-active-blue: #43AFFF;
+    --clr-active-yellow: #FFED00;
+    // border gradient
+    --clr-border-gradient-green: linear-gradient(112.74deg, #83DA9B 10.25%, rgba(131, 218, 155, 0) 68.12%);
+    --clr-border-gradient-red: linear-gradient(112.74deg, #D6746C 26.2%, rgba(210, 0, 2, 0) 68.12%);
+    --clr-border-gradient-green: linear-gradient(112.74deg, #61B4FF 10.25%, rgba(0, 143, 248, 0) 68.12%);
+    --clr-border-gradient-green: linear-gradient(112.74deg, #F1E664 10.25%, rgba(215, 199, 0, 0) 68.12%);
+
+    --ff-primary: 'Jost', sans-serif;
+    --transition: all 0.3s linear;
+    --spacing: 0.025rem;
+    --circle-radius: 50%;
+    --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --fixed-width: 700px;
+}
+
+/*
+=============== 
+Global Styles
+===============
+*/
+body {
+    font-family: var(--ff-primary);
+    background: white;
+    color: black;
+}
+h1,h2,h3,h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+}
+h1 {
+  font-size: 4rem;
+}
+
+/*  global classes */
+.wrapper {
+    min-height: 100vh;
+    overflow: hidden;
+    transition: all 0.3s linear;
+}
+._container {
+    max-width: var(--fixed-width);
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+.game-area {
+    &__title {
+        text-align: center;
+        margin: 0 0 2rem 0;
+        transform: scale(1);
+        animation: bounceTitle 2.5s ease-in-out;
+        animation-iteration-count: infinite;
+        @keyframes bounceTitle {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    }
+}
+.main {
+    position: relative;
+    .block-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 700px;
+        position: relative;
+        z-index: 1;
+        .block {
+            position: relative;
+            .btn {
+                position: absolute;
+                cursor: pointer;
+                transition: var(--transition);
+                &.active {
+                    filter: brightness(5);
+                }
+            }
+            &__btn_green {
+                right: 15px;
+                bottom: 15px;
+            }
+            &__btn_red {
+                left: 15px;
+                bottom: 15px;
+            }
+            &__btn_yellow {
+                right: 15px;
+                top: 15px;
+            }
+            &__btn_blue {
+                left: 15px;
+                top: 15px;
+            }
+        }
+    }
+    &__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--clr-primary-bg);
+        border-radius: var(--circle-radius);
+        z-index: 0;
+    }
+}
+
